@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Portfolio</title>
+        <style>
+            .main{
+                text-align: center;
+            }
+        </style>
+        <style>
+          .repobox {
+            background-color: lightgrey;
+            width: 300px;
+            border: 15px solid green;
+            padding: 50px;
+            margin: 20px;
+            margin: auto;
+          }
+          </style>
+    </head>
+    <body>
+        <div class="main">
+        <img
+            id="profileImage"
+            height="100"
+            width="100"
+        >
+        <h2 id="fullName"></h2>
+        <p id="bioInfo"></p>
+        <h4 id="twitterHandle"></h4>
+        <h5 id="followersInfo"></h5>
+        <p>
+          Find me on <a id="githubLink">GitHub</a>
+        </p>
+       
+    
+    </div>
+    <div class="repobox">
+      <h3 id="reponame">1</h3>
+      <h4 id="repobio">1</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">2</h3>
+      <h4 id="repobio">2</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">3</h3>
+      <h4 id="repobio">3</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">4</h3>
+      <h4 id="repobio">4</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">1</h3>
+      <h4 id="repobio">1</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">2</h3>
+      <h4 id="repobio">2</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">3</h3>
+      <h4 id="repobio">3</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">4</h3>
+      <h4 id="repobio">4</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">1</h3>
+      <h4 id="repobio">1</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">2</h3>
+      <h4 id="repobio">2</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">3</h3>
+      <h4 id="repobio">3</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">4</h3>
+      <h4 id="repobio">4</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">1</h3>
+      <h4 id="repobio">1</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">2</h3>
+      <h4 id="repobio">2</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">3</h3>
+      <h4 id="repobio">3</h4>
+    </div>
+    <br>
+    <div class="repobox">
+      <h3 id="reponame">4</h3>
+      <h4 id="repobio">4</h4>
+    </div>
+    
+
+    <script>
+      fetch("https://api.github.com/users/g0dgamerz")
+        .then(response => response.json())
+        .then(function(data){
+          //console.log(data)
+
+          let followersCount = data['followers']
+          let followersInfo = `I have been followed by ${followersCount} awesome people on GitHub`
+
+          document.getElementById('profileImage').src = data['avatar_url']
+          document.getElementById('fullName').textContent = data['name']
+          document.getElementById('bioInfo').textContent = data['bio']
+          document.getElementById('twitterHandle').textContent = data['twitter_username']
+          document.getElementById('followersInfo').textContent = followersInfo
+          document.getElementById('githubLink').href = data['html_url']
+        })
+        fetch("https://api.github.com/users/AaganMaskey/repos")
+        .then(response => response.json())
+        .then(function(data) {
+        for(i=0;i<20;i++){
+              document.getElementById('reponame').textContent = i;
+        document.getElementById('repobio').textContent = i;
+
+        }
+   
+          
+        })
+    </script>
+    </body>
+</html>
